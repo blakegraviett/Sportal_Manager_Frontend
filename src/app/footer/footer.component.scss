@@ -1,0 +1,37 @@
+.btn {
+  padding: 2px;
+  margin: 0;
+  width: 4%;
+  color: black;
+  background-color: black;
+}
+.btn:hover {
+  color: black;
+}
+img {
+  width: 65%;
+}
+a {
+  color: #ffa559;
+}
+a:hover {
+  color: #ff6000;
+}
+.bg-custom {
+  background-color: black;
+}
+h5 {
+  color: #ff6000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.hr-container {
+  text-align: center; /* Center the <hr> element */
+}
+
+.custom-hr {
+  width: 75%; /* Adjust the width of the <hr> element */
+  margin: 20px auto; /* Adjust the margin for centering vertically */
+  border: 1px solid #ff6000; /* Optional: Customize the border color */
+}

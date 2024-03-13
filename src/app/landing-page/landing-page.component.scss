@@ -1,0 +1,25 @@
+img {
+  width: 90%;
+}
+h1 {
+  font-size: 300%;
+  font-weight: 700;
+  color: #ffa559;
+}
+p {
+  font-size: larger;
+  color: #ffe6c7;
+}
+ul {
+  font-size: larger;
+  list-style-image: url("/assets/images/Stickman-icon.png"); /* Replace with the path to your image */
+}
+li {
+  color: #ffe6c7;
+}
+a {
+  color: #ffa559;
+}
+a:hover {
+  color: #ff6000;
+}
