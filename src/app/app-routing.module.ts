@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    component: LandingPageComponent,
     pathMatch: 'full',
   },
   {
-    path: 'home',
-    component: LandingPageComponent,
+    path: 'auth',
+    component: AuthComponent,
   },
 ];
 
