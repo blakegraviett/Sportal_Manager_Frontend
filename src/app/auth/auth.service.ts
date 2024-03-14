@@ -9,7 +9,6 @@ export class AuthService {
   apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/';
   constructor(private http: HttpClient) {}
   isLogged = new Subject<Boolean>();
-
   loginUser(email, password): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const credentials = { email, password };
@@ -52,5 +51,27 @@ export class AuthService {
         withCredentials: true,
       }
     );
+  }
+
+  getCurrentUser() {
+    return localStorage.getItem('currentUser');
+  }
+
+  clearLocalStorageAfterDuration() {
+    const lastStoredTime = localStorage.getItem('lastStoredTime');
+    if (lastStoredTime) {
+      const currentTime = new Date().getTime();
+      const storedTime = new Date(parseInt(lastStoredTime, 10));
+      const elapsedMilliseconds = currentTime - storedTime.getTime();
+      const twelveHoursMilliseconds = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+
+      if (elapsedMilliseconds >= twelveHoursMilliseconds) {
+        localStorage.clear();
+        console.log('Local storage cleared after 12 hours');
+      }
+    } else {
+      // Set the current time in local storage
+      localStorage.setItem('lastStoredTime', new Date().getTime().toString());
+    }
   }
 }

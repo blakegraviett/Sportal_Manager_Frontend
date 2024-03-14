@@ -4,6 +4,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
+import { ViewEventsComponent } from './events/view-events/view-events.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'user/verify-email',
     component: VerifyEmailComponent,
+  },
+  {
+    path: 'events/view',
+    component: ViewEventsComponent,
   },
 ];
 

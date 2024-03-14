@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ export class LoginComponent {
   isLoading: boolean = false;
   isLogged: boolean = false;
   isFailed: boolean = false;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   // LOGIN FORM
   loginForm = new FormGroup({
@@ -33,8 +38,17 @@ export class LoginComponent {
           this.isLoading = false;
           this.isLogged = true;
           this.isFailed = false;
-          this.authService.isLogged.next(true);
+          localStorage.setItem('currentUser', JSON.stringify(response.data));
+          localStorage.setItem(
+            'lastStoredTime',
+            new Date().getTime().toString()
+          );
           console.log('response:', response);
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => {
+              this.router.navigate(['/events/view']);
+            });
         },
         (error) => {
           // Handle login error
