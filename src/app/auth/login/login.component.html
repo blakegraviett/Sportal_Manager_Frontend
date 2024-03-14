@@ -29,13 +29,17 @@
         class="btn btn-primary"
         [disabled]="loginForm.invalid"
       >
-        Submit
+        <span *ngIf="!isLoading">Login</span>
+        <span *ngIf="isLoading">Loading...</span>
       </button>
     </form>
     <p id="switch">
       Need to make an account?
       <a style="cursor: pointer" routerLink="/auth/register">Register Now!</a>
     </p>
+  </div>
+  <div *ngIf="isLogged" class="alert alert-success center" role="alert">
+    You are now logged in
   </div>
   <div class="col-md-3"></div>
 </div>

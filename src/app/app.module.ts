@@ -13,6 +13,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
+import { ViewEventsComponent } from './events/view-events/view-events.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     LandingPageComponent,
     LoginComponent,
     RegisterComponent,
+    VerifyEmailComponent,
+    ViewEventsComponent,
   ],
   imports: [
     BrowserModule,

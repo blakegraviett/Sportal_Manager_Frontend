@@ -33,18 +33,35 @@
         placeholder="Enter password"
         required
       />
+      <label for="dropdown">Select an orginization:</label>
+      <select
+        class="form-control"
+        id="dropdown"
+        formControlName="org"
+        id="org"
+        type="org"
+      >
+        <option *ngFor="let org of this.orgs" [value]="org.name">
+          {{ org.name }}
+        </option>
+      </select>
+      <br />
       <button
         type="submit"
         class="btn btn-primary"
         [disabled]="registerForm.invalid"
       >
-        Submit
+        <span *ngIf="!isLoading">Register</span>
+        <span *ngIf="isLoading">Registering...</span>
       </button>
     </form>
     <p id="switch">
       Already have an account?
       <a style="cursor: pointer" routerLink="/auth/login">Login Here</a>
     </p>
+  </div>
+  <div *ngIf="isRegiestered" class="alert alert-success center" role="alert">
+    Please check your email to verify your account
   </div>
   <div class="col-md-3"></div>
 </div>

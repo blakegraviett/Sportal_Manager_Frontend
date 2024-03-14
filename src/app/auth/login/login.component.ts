@@ -8,6 +8,8 @@ import { AuthService } from '../auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  isLoading: boolean = false;
+  isLogged: boolean = false;
   constructor(private authService: AuthService) {}
 
   // LOGIN FORM
@@ -21,12 +23,14 @@ export class LoginComponent {
 
   // SUBMIT LOGIN FORM
   onSubmit() {
+    this.isLoading = true;
     this.authService
       .loginUser(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe(
         (response) => {
           // Handle successful login
-          console.log('Login successful', response);
+          this.isLoading = false;
+          this.isLogged = true;
         },
         (error) => {
           // Handle login error

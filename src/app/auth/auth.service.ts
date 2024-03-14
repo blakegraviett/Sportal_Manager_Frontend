@@ -1,18 +1,49 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/auth';
+  apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/';
   constructor(private http: HttpClient) {}
 
   loginUser(email, password): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const credentials = { email, password };
     const options = { headers, withCredentials: true };
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials, options);
+    return this.http.post<any>(
+      `${this.apiUrl}auth/login`,
+      credentials,
+      options
+    );
+  }
+  registerUser(name, email, password, org): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { name, email, password, org };
+    const options = { headers, withCredentials: true };
+    return this.http.post<any>(
+      `${this.apiUrl}auth/register`,
+      credentials,
+      options
+    );
+  }
+
+  getAllOrgs(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.get<any>(`${this.apiUrl}orgs`, options);
+  }
+
+  verifyEmail(email: string, token: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(
+      `${this.apiUrl}auth/verify-email?token=${token}&email=${email}`,
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
 }

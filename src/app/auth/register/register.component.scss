@@ -47,3 +47,22 @@ button:disabled {
 a {
   text-decoration: none;
 }
+option {
+  color: black;
+}
+select:focus {
+  outline: 1px solid #ffa559;
+  box-shadow: 0 0 10px #ff6000;
+}
+select:focus option {
+  color: white;
+  background-color: #ff6000;
+}
+option:hover {
+  background-color: yellow;
+}
+.alert {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 1%;
+}
