@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventsService } from '../../events/events.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private eventsService: EventsService
   ) {}
 
   // LOGIN FORM
@@ -43,7 +45,6 @@ export class LoginComponent {
             'lastStoredTime',
             new Date().getTime().toString()
           );
-          console.log('response:', response);
           this.router
             .navigateByUrl('/', { skipLocationChange: true })
             .then(() => {

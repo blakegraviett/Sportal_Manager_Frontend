@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-view-events',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrl: './view-events.component.scss',
 })
 export class ViewEventsComponent {
-  ngOnInit() {}
+  isUnauthorized: Boolean = false;
+  constructor(private eventsService: EventsService) {}
+  ngOnInit() {
+    this.eventsService.getAllEvents().subscribe(
+      (response) => {
+        // Handle successful login
+        console.log('response:', response);
+      },
+      (error) => {
+        this.isUnauthorized = true;
+        console.error('Login error', error);
+      }
+    );
+  }
 }
