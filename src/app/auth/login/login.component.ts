@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   isLoading: boolean = false;
   isLogged: boolean = false;
+  isFailed: boolean = false;
   constructor(private authService: AuthService) {}
 
   // LOGIN FORM
@@ -31,9 +32,15 @@ export class LoginComponent {
           // Handle successful login
           this.isLoading = false;
           this.isLogged = true;
+          this.isFailed = false;
+          this.authService.isLogged.next(true);
+          console.log('response:', response);
         },
         (error) => {
           // Handle login error
+          this.isLoading = false;
+          this.isLogged = false;
+          this.isFailed = true;
           console.error('Login error', error);
         }
       );

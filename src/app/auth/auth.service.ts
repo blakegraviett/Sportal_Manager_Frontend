@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class AuthService {
   apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/';
   constructor(private http: HttpClient) {}
+  isLogged = new Subject<Boolean>();
 
   loginUser(email, password): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -28,6 +29,12 @@ export class AuthService {
       credentials,
       options
     );
+  }
+
+  logoutUser(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.delete<any>(`${this.apiUrl}auth/logout`, options);
   }
 
   getAllOrgs(): Observable<any> {

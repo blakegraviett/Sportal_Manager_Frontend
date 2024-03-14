@@ -20,13 +20,25 @@
         <a class="nav-link" style="cursor: pointer" routerLink="">View</a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link" style="cursor: pointer" routerLink="">Admin</a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" style="cursor: pointer" routerLink="/auth/login"
           >Login</a
         >
       </li>
       <li class="nav-item active">
-        <a class="nav-link" style="cursor: pointer" routerLink="">Admin</a>
+        <a
+          class="nav-link"
+          style="cursor: pointer"
+          routerLink="/auth/login"
+          (click)="logout()"
+          >Logout</a
+        >
       </li>
     </ul>
   </div>
+  <span class="alert alert-danger" *ngIf="isLoggedOut"
+    >Successfully Logged Out</span
+  >
 </nav>
