@@ -1,0 +1,33 @@
+<div class="game-card">
+  <div class="teams">
+    <div class="team">
+      <img src="{{ this.homeTeam.logo }}" alt="{{ this.homeTeam.name }}" />
+      <span>{{ this.homeTeam.name }}</span>
+    </div>
+    <div class="versus">VS</div>
+    <div class="team">
+      <img src="{{ this.awayTeam.logo }}" alt="Team 2 Logo" />
+      <span>{{ this.awayTeam.name }}</span>
+    </div>
+  </div>
+  <div class="game-description">
+    <h2 class="center">{{ this.events.name }}</h2>
+    <p *ngIf="this.events.description" class="center">
+      {{ this.events.description }}
+    </p>
+    <p class="center">Start Time: test</p>
+    <div class="view-game">
+      <a href="{{ events.link }}">Watch Game</a>
+    </div>
+    <!-- Add start time -->
+  </div>
+  <div class="game-info">
+    <div class="score">
+      <span *ngIf="this.events.period.length == false">Live Score</span>
+      <span>{{ this.getLivePeriodScore() }}</span>
+    </div>
+    <div class="purchase-tickets">
+      <a href="{{ this.events.ticketLink }}">Purchase Tickets</a>
+    </div>
+  </div>
+</div>

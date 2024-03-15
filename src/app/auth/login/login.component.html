@@ -1,0 +1,49 @@
+<br />
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 formCol">
+    <h1 class="center">Login</h1>
+    <hr />
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="Enter email"
+        required
+      />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        placeholder="Enter password"
+        required
+      />
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginForm.invalid || isLoading"
+      >
+        <span *ngIf="!isLoading">Login</span>
+        <span *ngIf="isLoading">Loading...</span>
+      </button>
+    </form>
+    <p id="switch">
+      Need to make an account?
+      <a style="cursor: pointer" routerLink="/auth/register">Register Now!</a>
+    </p>
+  </div>
+  <div *ngIf="isLogged" class="alert alert-success center" role="alert">
+    You are now logged in
+  </div>
+  <div *ngIf="isFailed" class="alert alert-danger center" role="alert">
+    Inccorect email or password
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<br />
