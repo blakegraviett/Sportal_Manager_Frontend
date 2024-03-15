@@ -1,0 +1,49 @@
+.game-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.versus {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  display: flex;
+}
+
+.purchase-tickets a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+img {
+  width: 150%;
+}
