@@ -16,7 +16,7 @@ export class RegisterComponent {
     this.getAllOrgs();
   }
 
-  // LOGIN FORM
+  // Register FORM
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -27,7 +27,7 @@ export class RegisterComponent {
     org: new FormControl('', [Validators.required]),
   });
 
-  // SUBMIT LOGIN FORM
+  // SUBMIT Register FORM
   onSubmit() {
     this.isLoading = true;
     // register the user

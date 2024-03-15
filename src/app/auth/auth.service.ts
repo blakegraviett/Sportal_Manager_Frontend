@@ -53,6 +53,7 @@ export class AuthService {
     );
   }
 
+  // Get current user from local storage
   getCurrentUser() {
     return localStorage.getItem('currentUser');
   }

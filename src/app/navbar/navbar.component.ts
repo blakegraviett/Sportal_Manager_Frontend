@@ -13,9 +13,11 @@ export class NavbarComponent {
   isLoggedOut: Boolean = false;
   isAdmin: Boolean = false;
   ngOnInit() {
+    // Checks Local Storage to see if the user is an admin on initial page load
     if (JSON.parse(this.authService.getCurrentUser()).role === 'admin') {
       this.isAdmin = true;
     }
+    // checks to make sure the user is an admin on route changes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (!JSON.parse(this.authService.getCurrentUser()).role) {
@@ -29,6 +31,7 @@ export class NavbarComponent {
       }
     });
   }
+  // helper function to check if the user is an admin
   checkAdmin(role) {
     if (role === 'admin') {
       this.isAdmin = true;
@@ -38,6 +41,7 @@ export class NavbarComponent {
   }
   ngOnDestroy() {}
 
+  // Logout the user and clear the local storage of data
   logout() {
     this.authService.logoutUser().subscribe(
       (response) => {

@@ -16,6 +16,7 @@ export class VerifyEmailComponent {
   ) {}
 
   ngOnInit() {
+    // get the params and send the information to the backend to verify the email
     this.routeSubscription = this.activatedRoute.queryParams.subscribe(
       (params) => {
         const email = params['email'];
