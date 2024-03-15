@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-md-12 center">
+    <div class="custom-dropdown" (click)="toggleDropdown()">
+      <div class="dropdown-header">{{ selectedOption }}</div>
+      <div class="dropdown-menu" [ngClass]="{ show: isDropdownOpen }">
+        <div
+          class="dropdown-item"
+          *ngFor="let event of this.allEvents"
+          (click)="selectOption(event)"
+        >
+          {{ event.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div>
+        <h3 class="panel-title">
+          Event Options for {{ this.selectedEvent.name }}
+        </h3>
+      </div>
+      <div class="panel-body">
+        <form (submit)="saveChanges()">
+          <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input
+              value="{{ this.selectedEvent.name }}"
+              type="text"
+              class="form-control"
+              id="eventName"
+              name="eventName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event description</label>
+            <input
+              value="{{ this.selectedEvent.description }}"
+              type="text"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input
+              value="{{ this.selectedEvent.date }}"
+              type="date"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Start Time</label>
+            <input
+              value="{{ this.selectedEvent.time }}"
+              type="time"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Watch Link</label>
+            <input
+              value="{{ this.selectedEvent.link }}"
+              type="text"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Teams</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Workers</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <!-- Add more form fields for other event properties as needed -->
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="game-card">
+      <div class="teams">
+        <div class="team">
+          <img src="{{ this.homeTeam.logo }}" alt="{{ this.homeTeam.name }}" />
+          <span>{{ this.homeTeam.name }}</span>
+        </div>
+        <div class="versus">VS</div>
+        <div class="team">
+          <img src="{{ this.awayTeam.logo }}" alt="Team 2 Logo" />
+          <span>{{ this.awayTeam.name }}</span>
+        </div>
+      </div>
+      <div class="game-description">
+        <h2 class="center">{{ this.selectedEvent.name }}</h2>
+        <p *ngIf="this.selectedEvent.description" class="center">
+          {{ this.selectedEvent.description }}
+        </p>
+        <p class="center">Start Time: test</p>
+        <div class="view-game">
+          <a href="{{ selectedEvent.link }}">Watch Game</a>
+        </div>
+        <!-- Add start time -->
+      </div>
+      <div class="game-info">
+        <div class="score">
+          <span>Live Score</span>
+        </div>
+        <div class="purchase-tickets">
+          <a href="{{ this.selectedEvent.ticketLink }}">Purchase Tickets</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

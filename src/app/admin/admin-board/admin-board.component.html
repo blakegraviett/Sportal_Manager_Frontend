@@ -1,0 +1,47 @@
+<div *ngIf="!isAdmin" class="container">
+  <div class="row">
+    <div class="col-md-12 center">
+      <br />
+      <div
+        *ngIf="currentUserRole !== 'admin' || 'owner'"
+        class="alert alert-danger"
+      >
+        You are do not have access to this page
+        <a style="cursor: pointer" routerLink="/auth/login" class="loginEr"
+          >here</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isAdmin">
+  <div class="sidebarContainer">
+    <div class="sidebar">
+      <h2>Admin Panel</h2>
+      <hr />
+      <ul>
+        <li><a routerLink="#">Create Events</a></li>
+        <li><a routerLink="/manage-events">Manage Events</a></li>
+        <li><a routerLink="#">Update Scores</a></li>
+        <li><a routerLink="#">Manage Teams</a></li>
+        <li><a routerLink="#">Manage Admins</a></li>
+        <li><a routerLink="#">Manage Workers</a></li>
+        <br />
+        <hr />
+        <li>
+          <h5>Welcome {{ this.currentUserName }}!</h5>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
