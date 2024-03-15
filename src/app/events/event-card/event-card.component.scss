@@ -12,7 +12,9 @@
   align-items: center;
   margin-bottom: 20px;
 }
-
+.team span {
+  padding-top: 2%;
+}
 .team {
   display: flex;
   flex-direction: column;
@@ -20,8 +22,8 @@
 }
 
 .team img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 
@@ -31,6 +33,7 @@
 }
 
 .game-info {
+  padding-top: 6%;
   display: flex;
   justify-content: space-between;
 }
@@ -41,9 +44,22 @@
 
 .purchase-tickets a {
   text-decoration: none;
-  color: #007bff;
+  color: #ff6000;
   font-weight: bold;
 }
-img {
-  width: 150%;
+.purchase-tickets a:hover {
+  color: #ffa559;
+}
+
+.view-game {
+  text-align: center;
+}
+
+.view-game a {
+  text-decoration: none;
+  color: #ff6000; /* Adjust the color as needed */
+  font-weight: bold;
+}
+.view-game a:hover {
+  color: #ffa559;
 }

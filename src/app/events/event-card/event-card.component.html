@@ -12,14 +12,19 @@
   </div>
   <div class="game-description">
     <h2 class="center">{{ this.events.name }}</h2>
-    <p class="center">{{ this.events.description }}</p>
+    <p *ngIf="this.events.description" class="center">
+      {{ this.events.description }}
+    </p>
     <p class="center">Start Time: test</p>
+    <div class="view-game">
+      <a href="{{ events.link }}">Watch Game</a>
+    </div>
     <!-- Add start time -->
   </div>
   <div class="game-info">
     <div class="score">
-      <span>Live Score: </span>
-      <span>test</span>
+      <span *ngIf="this.events.period.length == false">Live Score</span>
+      <span>{{ this.getLivePeriodScore() }}</span>
     </div>
     <div class="purchase-tickets">
       <a href="{{ this.events.ticketLink }}">Purchase Tickets</a>
