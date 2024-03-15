@@ -17,7 +17,7 @@ export class ViewEventsComponent {
       },
       (error) => {
         this.isUnauthorized = true;
-        console.error('Login error', error);
+        // console.error('Login error', error);
       }
     );
   }
