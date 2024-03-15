@@ -15,6 +15,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { ViewEventsComponent } from './events/view-events/view-events.component';
+import { EventCardComponent } from './events/event-card/event-card.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ViewEventsComponent } from './events/view-events/view-events.component'
     RegisterComponent,
     VerifyEmailComponent,
     ViewEventsComponent,
+    EventCardComponent,
   ],
   imports: [
     BrowserModule,
