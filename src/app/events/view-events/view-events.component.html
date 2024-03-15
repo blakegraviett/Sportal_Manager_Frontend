@@ -1,18 +1,21 @@
 <!-- IF THE USER IS NOT AUTHORIZED TELL THEM TO LOGIN -->
-<div *ngIf="isUnauthorized" class="row">
-  <div class="col-md-12">
-    <div *ngIf="isUnauthorized" class="alert alert-danger">
-      Please Login or Register
-      <a style="cursor: pointer" routerLink="/auth/login" class="loginEr"
-        >here</a
-      >
+<br />
+<div class="container">
+  <div *ngIf="isUnauthorized" class="row">
+    <div class="col-md-12">
+      <div *ngIf="isUnauthorized" class="alert alert-danger">
+        Please Login or Register
+        <a style="cursor: pointer" routerLink="/auth/login" class="loginEr"
+          >here</a
+        >
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SHOW THE EVENTS FOR THE USERS ORG -->
-<div class="row">
-  <div class="col-md-6" *ngFor="let event of this.eventsArray">
-    <app-event-card [events]="event"></app-event-card>
+  <!-- SHOW THE EVENTS FOR THE USERS ORG -->
+  <div class="row">
+    <div class="col-md-6" *ngFor="let event of this.eventsArray">
+      <app-event-card [events]="event"></app-event-card>
+    </div>
   </div>
 </div>

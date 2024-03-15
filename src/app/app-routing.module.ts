@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { ViewEventsComponent } from './events/view-events/view-events.component';
+import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'events/view',
     component: ViewEventsComponent,
+  },
+  {
+    path: 'admin/board',
+    component: AdminBoardComponent,
   },
 ];
 
