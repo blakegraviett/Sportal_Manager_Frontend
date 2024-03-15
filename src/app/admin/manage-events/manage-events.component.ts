@@ -58,11 +58,15 @@ export class ManageEventsComponent {
   }
 
   getTeamNameAndIcon(events) {
-    this.eventService.getSingleTeam(events.teams[0]).subscribe((response) => {
-      this.homeTeam = response.data;
-    });
-    this.eventService.getSingleTeam(events.teams[1]).subscribe((response) => {
-      this.awayTeam = response.data;
-    });
+    this.eventService
+      .getSingleTeam(events.teams.homeTeam)
+      .subscribe((response) => {
+        this.homeTeam = response.data;
+      });
+    this.eventService
+      .getSingleTeam(events.teams.awayTeam)
+      .subscribe((response) => {
+        this.awayTeam = response.data;
+      });
   }
 }
