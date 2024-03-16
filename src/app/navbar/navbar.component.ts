@@ -15,8 +15,7 @@ export class NavbarComponent {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log('working?');
-        this.authService.getCurrentUser()
+        this.authService.getCurrentUser();
         if (!JSON.parse(this.authService.getCurrentUser()).role) {
           this.checkAdmin(
             JSON.parse(this.authService.getCurrentUser()).user.role
@@ -45,8 +44,8 @@ export class NavbarComponent {
         // Sets a default to local storage
         const currentUser = JSON.stringify({ role: 'logedOut' });
         localStorage.setItem('currentUser', currentUser),
-        localStorage.setItem('lastStoredTime', ''),
-        this.isLoggedOut = true;
+          localStorage.setItem('lastStoredTime', ''),
+          (this.isLoggedOut = true);
         // shows successful logout message
         setTimeout(() => {
           this.isLoggedOut = false;
