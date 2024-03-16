@@ -19,81 +19,92 @@
     <div class="panel panel-default">
       <div>
         <h3 class="panel-title">
-          Event Options for {{ this.selectedEvent.name }}
+          Event Options for: {{ this.selectedEvent.name }}
         </h3>
+        <hr />
       </div>
       <div class="panel-body">
-        <form (submit)="saveChanges()">
+        <form [formGroup]="updateEvent" (submit)="saveChanges()">
           <div class="form-group">
-            <label for="eventName">Event Name</label>
+            <label for="eventName">Event Name:</label>
             <input
               value="{{ this.selectedEvent.name }}"
               type="text"
               class="form-control"
+              formControlName="name"
               id="eventName"
               name="eventName"
             />
           </div>
           <div class="form-group">
-            <label for="eventDate">Event description</label>
+            <label for="eventDate">Event description:</label>
             <input
               value="{{ this.selectedEvent.description }}"
               type="text"
               class="form-control"
+              formControlName="description"
               id="eventDate"
               name="eventDate"
             />
           </div>
           <div class="form-group">
-            <label for="eventDate">Event Date</label>
+            <label for="eventDate">Event Date:</label>
             <input
               value="{{ this.selectedEvent.date }}"
               type="date"
               class="form-control"
+              formControlName="date"
               id="eventDate"
               name="eventDate"
             />
           </div>
           <div class="form-group">
-            <label for="eventDate">Start Time</label>
+            <label for="eventDate">Start Time:</label>
             <input
               value="{{ this.selectedEvent.time }}"
               type="time"
               class="form-control"
+              formControlName="startTime"
               id="eventDate"
               name="eventDate"
             />
           </div>
           <div class="form-group">
-            <label for="eventDate">Watch Link</label>
+            <label for="eventDate">Watch Link:</label>
             <input
               value="{{ this.selectedEvent.link }}"
               type="text"
               class="form-control"
+              formControlName="link"
               id="eventDate"
               name="eventDate"
             />
           </div>
           <div class="form-group">
-            <label for="homeTeam">Home Team</label>
-            <select class="form-control" id="homeTeam" name="homeTeam">
-              <option>TEst</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="awayTeam">Away Team</label>
-            <select class="form-control" id="awayTeam" name="awayTeam">
-              <option>Test</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="eventDate">Workers</label>
-            <input
-              type="text"
+            <label for="homeTeam">Home Team:</label>
+            <select
               class="form-control"
-              id="eventDate"
-              name="eventDate"
-            />
+              id="homeTeam"
+              name="homeTeam"
+              formControlName="homeTeam"
+            >
+              <option *ngFor="let team of this.allTeams" [value]="team.name">
+                {{ team.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="awayTeam">Away Team:</label>
+            <select
+              class="form-control"
+              id="awayTeam"
+              name="awayTeam"
+              formControlName="awayTeam"
+            >
+              <option *ngFor="let team of this.allTeams" [value]="team.name">
+                {{ team.name }}
+              </option>
+            </select>
           </div>
           <!-- Add more form fields for other event properties as needed -->
           <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -134,6 +145,11 @@
           <a href="{{ this.selectedEvent.ticketLink }}">Purchase Tickets</a>
         </div>
       </div>
+    </div>
+
+    <!-- TODO NEEDS WORK -->
+    <div class="worker-card">
+      <h4 class="center">Manage Workers for: {{ this.selectedEvent.name }}</h4>
     </div>
   </div>
 </div>
