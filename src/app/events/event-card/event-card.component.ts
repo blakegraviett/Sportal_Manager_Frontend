@@ -18,12 +18,12 @@ export class EventCardComponent {
 
   getTeamNameAndIcon() {
     this.eventsService
-      .getSingleTeam(this.events.teams[0])
+      .getSingleTeam(this.events.teams.homeTeam)
       .subscribe((response) => {
         this.homeTeam = response.data;
       });
     this.eventsService
-      .getSingleTeam(this.events.teams[1])
+      .getSingleTeam(this.events.teams.awayTeam)
       .subscribe((response) => {
         this.awayTeam = response.data;
       });
