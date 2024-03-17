@@ -15,13 +15,21 @@ export class AdminService {
     const options = { headers, withCredentials: true };
     return this.http.patch(`${this.apiUrl}events/${id}`, credentials, options);
   }
+  updateEventWorkers(id, workers) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { workers };
+    console.log('workers:', workers);
+
+    const options = { headers, withCredentials: true };
+    return this.http.patch(`${this.apiUrl}events/${id}`, credentials, options);
+  }
   // get all workers in an event
   getAllWorkers() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers, withCredentials: true };
     return this.http.get<any>(`${this.apiUrl}users`, options);
   }
-  getAllEventWorker(userId) {
+  getSingleWorker(userId) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers, withCredentials: true };
     return this.http.get<any>(`${this.apiUrl}users/${userId}`, options);
@@ -36,5 +44,11 @@ export class AdminService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers, withCredentials: true };
     return this.http.get<any>(`${this.apiUrl}teams/${id}`, options);
+  }
+
+  deleteEvent(id) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.delete(`${this.apiUrl}events/${id}`, options);
   }
 }

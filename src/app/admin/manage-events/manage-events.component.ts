@@ -13,9 +13,11 @@ export class ManageEventsComponent {
   selectedOption: string = 'Select an option';
   isDropdownOpen: boolean = false;
   allUsers: any = [''];
-  allEventWorkers: any = [''];
+  allEventWorkers: any = [];
   allEvents: Array<any>;
   allTeams: any = [''];
+  allWorkers: Array<any> = [''];
+  areYouSure: boolean = false;
   homeTeam = {
     name: '',
     logo: '',
@@ -42,7 +44,7 @@ export class ManageEventsComponent {
 
   // * LOGIC
   // Once the dropdown is selected
-  selectOption(event: any) {
+  async selectOption(event: any) {
     this.selectedOption = event.name;
     this.toggleDropdown();
     this.selectedEvent = event;
@@ -77,16 +79,25 @@ export class ManageEventsComponent {
           console.error('Error:', error); // Handle error
         }
       );
-    // get all avalible users
-    // this.adminService.getAllWorkers().subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     this.allUsers = response.data.users;
-    //   },
-    //   (error) => {
-    //     console.error('Error:', error); // Handle error
-    //   }
-    // );
+    this.adminService.getAllWorkers().subscribe(
+      (res) => {
+        this.allWorkers = res.data.users;
+      },
+      (error) => {
+        console.error('Error fetching data:', error); // Handle error
+      }
+    );
+    this.allEventWorkers = [];
+    for (const worker of this.selectedEvent.workers) {
+      this.adminService.getSingleWorker(worker).subscribe(
+        (response) => {
+          this.allEventWorkers.push(response.data);
+        },
+        (error) => {
+          console.error('Error:', error); // Handle error
+        }
+      );
+    }
   }
 
   constructor(
@@ -149,6 +160,63 @@ export class ManageEventsComponent {
       );
   }
 
+  submitAddWorker() {
+    const workersEmails = [];
+    for (const worker of this.allEventWorkers) {
+      workersEmails.push(worker.email);
+    }
+
+    workersEmails.push(this.addWorkerForm.value.email);
+    this.adminService
+      .updateEventWorkers(this.selectedEvent._id, workersEmails)
+      .subscribe(
+        (response) => {
+          location.reload();
+        },
+        (error) => {
+          console.error('Error:', error); // Handle error
+        }
+      );
+  }
+  submitRemoveWorker() {
+    console.log(this.removeWorkerForm.value);
+    let workersEmails = [];
+    for (const worker of this.allEventWorkers) {
+      workersEmails.push(worker.email);
+    }
+    workersEmails = workersEmails.filter(
+      (email) => email !== this.removeWorkerForm.value.email
+    );
+
+    this.adminService
+      .updateEventWorkers(this.selectedEvent._id, workersEmails)
+      .subscribe(
+        (response) => {
+          location.reload();
+        },
+        (error) => {
+          console.error('Error:', error); // Handle error
+        }
+      );
+  }
+
+  areYouSureFunc() {
+    if (this.selectedEvent.name === '') {
+      return;
+    }
+    this.areYouSure = !this.areYouSure;
+  }
+
+  deleteEvent() {
+    this.adminService.deleteEvent(this.selectedEvent._id).subscribe(
+      (response) => {
+        location.reload();
+      },
+      (error) => {
+        console.error('Error:', error); // Handle error
+      }
+    );
+  }
   getTeamNameAndIcon(events) {
     this.eventService
       .getSingleTeam(events.teams.homeTeam)
@@ -170,5 +238,13 @@ export class ManageEventsComponent {
     awayTeam: new FormControl(''),
     date: new FormControl(''),
     startTime: new FormControl(''),
+  });
+
+  addWorkerForm = new FormGroup({
+    email: new FormControl(''),
+  });
+
+  removeWorkerForm = new FormGroup({
+    email: new FormControl(''),
   });
 }

@@ -172,3 +172,87 @@ button:disabled {
   margin-bottom: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+.workerHeading {
+  padding-top: 1.5%;
+}
+
+.center {
+  text-align: center;
+}
+input {
+  color: black;
+}
+.add-worker-form input,
+.remove-worker-form select,
+.existing-workers select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+.logo {
+  width: 70%;
+}
+.logo-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 3%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.worker-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.worker-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.worker-item:last-child {
+  border-bottom: none;
+}
+
+.worker-item:hover {
+  background-color: #f9f9f9;
+}
+
+.worker-item:first-child {
+  border-top: 1px solid #ddd;
+}
+
+/* Centering the worker name */
+.worker-item {
+  display: flex;
+  justify-content: center;
+}
+.btn-danger {
+  width: 75%;
+  background-color: #ff0f0f;
+}
+.btn-danger:hover {
+  background-color: #ff4545;
+}
+.btn-success {
+  width: 75%;
+  background-color: green;
+}
+.btn-success:hover {
+  background-color: #22bb33;
+}
+
+/* alert.component.css */
+.alert {
+  width: 90%;
+}
+.alert-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deleteEvent {
+  width: 100%;
+}
