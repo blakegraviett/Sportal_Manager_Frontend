@@ -1,0 +1,41 @@
+.sidebarContainer {
+  display: flex;
+  min-height: 75vh;
+}
+
+.sidebar {
+  flex: 0 0 250px; /* Sidebar width */
+  padding: 20px;
+  background-color: #222222;
+  color: #fff;
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar a {
+  color: #ffa559;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: #ffe6c7;
+}
+.content {
+  flex-grow: 1; /* Allow content to grow */
+  padding: 20px;
+}
+li {
+  font-size: larger;
+  color: #ff6000;
+  margin-top: 20%;
+}
+
+h2,
+h5 {
+  padding-top: 5%;
+  color: #ff6000;
+}

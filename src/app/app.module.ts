@@ -17,6 +17,7 @@ import { VerifyEmailComponent } from './auth/verify-email/verify-email.component
 import { ViewEventsComponent } from './events/view-events/view-events.component';
 import { EventCardComponent } from './events/event-card/event-card.component';
 import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
+import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
     ViewEventsComponent,
     EventCardComponent,
     AdminBoardComponent,
+    ManageEventsComponent,
   ],
   imports: [
     BrowserModule,
