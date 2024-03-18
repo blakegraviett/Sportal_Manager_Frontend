@@ -11,8 +11,12 @@ import { ManageEventsComponent } from './admin/manage-events/manage-events.compo
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent,
     pathMatch: 'full',
+    redirectTo: 'home',
+  },
+  {
+    path: 'home',
+    component: LandingPageComponent,
   },
   {
     path: 'auth/login',
