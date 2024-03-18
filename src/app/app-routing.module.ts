@@ -9,8 +9,12 @@ import { ViewEventsComponent } from './events/view-events/view-events.component'
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent,
     pathMatch: 'full',
+    redirectTo: 'home',
+  },
+  {
+    path: 'home',
+    component: LandingPageComponent,
   },
   {
     path: 'auth/login',
