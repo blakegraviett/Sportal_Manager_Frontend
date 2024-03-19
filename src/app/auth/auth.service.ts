@@ -19,6 +19,7 @@ export class AuthService {
       options
     );
   }
+
   registerUser(name, email, password, org): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const credentials = { name, email, password, org };
@@ -36,12 +37,6 @@ export class AuthService {
     return this.http.delete<any>(`${this.apiUrl}auth/logout`, options);
   }
 
-  getAllOrgs(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const options = { headers, withCredentials: true };
-    return this.http.get<any>(`${this.apiUrl}orgs`, options);
-  }
-
   verifyEmail(email: string, token: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(
@@ -51,6 +46,12 @@ export class AuthService {
         withCredentials: true,
       }
     );
+  }
+
+  getAllOrgs(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.get<any>(`${this.apiUrl}orgs`, options);
   }
 
   // Get current user from local storage
