@@ -121,9 +121,9 @@
     <br *ngIf="areYouSure" />
     <div class="alert-container" *ngIf="areYouSure">
       <div class="alert alert-danger" role="alert">
-        <h5 style="color: black" class="center">
-          Are you sure you want to delete the event?
-        </h5>
+        <p style="color: black" class="center">
+          Are you sure you want to delete "{{ this.selectedEvent.name }}"?
+        </p>
         <div class="row">
           <div class="col-md-6 center">
             <button
@@ -184,7 +184,7 @@
         <p *ngIf="this.selectedEvent.description" class="center">
           {{ this.selectedEvent.description }}
         </p>
-        <p class="center">Start Time: test</p>
+        <p class="center">{{ this.selectedEvent.date }}</p>
         <div class="view-game">
           <a href="{{ selectedEvent.link }}">Watch Game</a>
         </div>

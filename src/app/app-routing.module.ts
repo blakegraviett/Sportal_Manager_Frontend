@@ -7,6 +7,7 @@ import { VerifyEmailComponent } from './auth/verify-email/verify-email.component
 import { ViewEventsComponent } from './events/view-events/view-events.component';
 import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
 import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
+import { CreateEventComponent } from './admin/create-event/create-event.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
     component: AdminBoardComponent,
     children: [
       { path: '', redirectTo: 'manage-events', pathMatch: 'full' },
-      // { path: 'create-events', component: CreateEventsComponent },
+      { path: 'create-events', component: CreateEventComponent },
       { path: 'manage-events', component: ManageEventsComponent },
       // { path: 'update-scores', component: UpdateScoresComponent },
       // { path: 'manage-teams', component: ManageTeamsComponent },

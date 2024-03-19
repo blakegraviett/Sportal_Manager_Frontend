@@ -8,10 +8,39 @@ export class AdminService {
   apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/';
   constructor(private http: HttpClient) {}
 
-  // update an event
-  updateEvent(id, name, description, awayTeam, homeTeam, link) {
+  // create a new event
+  createEvent(
+    name,
+    description,
+    date,
+    sport,
+    link,
+    price,
+    ticketAmount,
+    homeTeam,
+    awayTeam,
+    workerEmails
+  ) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const credentials = { name, description, awayTeam, homeTeam, link };
+    const credentials = {
+      name,
+      description,
+      date,
+      sport,
+      link,
+      price,
+      ticketAmount,
+      homeTeam,
+      awayTeam,
+      workerEmails,
+    };
+    const options = { headers, withCredentials: true };
+    return this.http.post(`${this.apiUrl}events`, credentials, options);
+  }
+  // update an event
+  updateEvent(id, name, description, awayTeam, homeTeam, link, date) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { name, description, awayTeam, homeTeam, link, date };
     const options = { headers, withCredentials: true };
     return this.http.patch(`${this.apiUrl}events/${id}`, credentials, options);
   }
