@@ -82,12 +82,19 @@ export class CreateEventComponent {
             });
         },
         (error) => {
+          // TODO MAKE AN ERROR ALERT
+          console.log('try again');
+
           console.error('Error:', error); // Handle error
         }
       );
   }
 
   convertToAmPm(time) {
+    if (time === '') {
+      // TODO MAKE THE ERROR ALERT GO OFF
+      return '';
+    }
     // Parse the time string into hours and minutes
     const [hours, minutes] = time.split(':').map(Number);
 
