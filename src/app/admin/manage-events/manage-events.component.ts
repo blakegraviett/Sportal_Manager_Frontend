@@ -116,6 +116,15 @@ export class ManageEventsComponent {
   }
 
   saveChanges() {
+    const dateString = this.updateEvent.value.date;
+
+    // Create a new Date object from the date string
+    const dateObject = new Date(dateString);
+
+    // Get the month and day from the date object
+    const month = dateObject.toLocaleString('default', { month: 'long' });
+    const day = dateObject.getDate();
+
     const updatedEvent = {
       id: this.selectedEvent._id,
       name: this.updateEvent.value.name,
@@ -123,8 +132,10 @@ export class ManageEventsComponent {
       link: this.updateEvent.value.link,
       awayTeam: this.updateEvent.value.awayTeam,
       homeTeam: this.updateEvent.value.homeTeam,
+      date: `${month} ${day} at ${this.convertToAmPm(
+        this.updateEvent.value.startTime
+      )}`,
     };
-    console.log('this.selectedEvent.name:', this.selectedEvent.name);
 
     if (updatedEvent.name === '') {
       updatedEvent.name = this.selectedEvent.name;
@@ -141,6 +152,10 @@ export class ManageEventsComponent {
     if (updatedEvent.homeTeam === '') {
       updatedEvent.homeTeam = this.selectedEvent.teams.homeTeam;
     }
+    if (this.updateEvent.value.startTime === '') {
+      updatedEvent.date = this.selectedEvent.date;
+    }
+
     this.adminService
       .updateEvent(
         updatedEvent.id,
@@ -148,7 +163,8 @@ export class ManageEventsComponent {
         updatedEvent.description,
         updatedEvent.awayTeam,
         updatedEvent.homeTeam,
-        updatedEvent.link
+        updatedEvent.link,
+        updatedEvent.date
       )
       .subscribe(
         (response) => {
@@ -247,4 +263,22 @@ export class ManageEventsComponent {
   removeWorkerForm = new FormGroup({
     email: new FormControl(''),
   });
+  convertToAmPm(time) {
+    if (time === '') {
+      return '';
+    }
+    // Parse the time string into hours and minutes
+    const [hours, minutes] = time.split(':').map(Number);
+
+    // Determine AM or PM and convert hours accordingly
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const displayHours = hours % 12 || 12; // Convert 0 to 12
+
+    // Format the time string in AM/PM format
+    const amPmTime = `${displayHours}:${minutes
+      .toString()
+      .padStart(2, '0')} ${period}`;
+
+    return amPmTime;
+  }
 }

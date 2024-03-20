@@ -1,0 +1,161 @@
+<form [formGroup]="createEventFrom" (submit)="onSubmit()" novalidate>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel1">
+        <h3 class="panel-title">Create Event!</h3>
+        <hr />
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="eventName">Event Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              id="eventName"
+              name="eventName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event description:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="description"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date:</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="startDate"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Start Time:</label>
+            <input
+              type="time"
+              class="form-control"
+              formControlName="startTime"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="homeTeam">Sport:</label>
+            <select
+              class="form-control"
+              id="homeTeam"
+              name="homeTeam"
+              formControlName="sport"
+            >
+              <option>baseball</option>
+              <option>basketball</option>
+              <option>football</option>
+              <option>volleyball</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Watch Link:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="link"
+              id="eventDate"
+              name="eventDate"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 panel2">
+      <h3 class="panel-title">More Event Info</h3>
+      <hr />
+      <div class="form-group">
+        <label for="eventDate">Ticket Price ($):</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="price"
+          id="eventDate"
+          name="eventDate"
+        />
+      </div>
+      <div class="form-group">
+        <label for="eventDate">Total Amount of Tickets:</label>
+        <input
+          type="number"
+          max="999"
+          class="form-control"
+          formControlName="ticketAmount"
+          id="eventDate"
+          name="eventDate"
+        />
+      </div>
+      <div class="form-group">
+        <label for="homeTeam">Home Team:</label>
+        <select
+          class="form-control"
+          id="homeTeam"
+          name="homeTeam"
+          formControlName="homeTeam"
+        >
+          <option *ngFor="let team of this.allTeams" [value]="team.name">
+            {{ team.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="awayTeam">Away Team:</label>
+        <select
+          class="form-control"
+          id="awayTeam"
+          name="awayTeam"
+          formControlName="awayTeam"
+        >
+          <option *ngFor="let team of this.allTeams" [value]="team.name">
+            {{ team.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="awayTeam">Select Workers: (Ctl Click All Workers)</label>
+        <select
+          class="form-control"
+          id="custom-select"
+          formControlName="workerEmails"
+          multiple
+        >
+          <option *ngFor="let worker of this.allWorkers" [value]="worker.email">
+            {{ worker.email }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Add more form fields for other event properties as needed -->
+      <button
+        *ngIf="!isLoading"
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!this.createEventFrom.valid"
+      >
+        Submit
+      </button>
+      <button *ngIf="isLoading" type="submit" class="btn btn-primary" disabled>
+        Loading...
+      </button>
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col-md-12">
+    <br *ngIf="isError" />
+    <div *ngIf="isError" class="alert alert-danger center" role="alert">
+      {{ this.error }}
+    </div>
+  </div>
+</div>
