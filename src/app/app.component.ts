@@ -10,8 +10,5 @@ export class AppComponent {
   constructor(private authService: AuthService) {}
 
   currentUser: any;
-  ngOnInit() {
-    this.currentUser = JSON.parse(this.authService.getCurrentUser());
-    this.authService.clearLocalStorageAfterDuration();
-  }
+  ngOnInit() {}
 }

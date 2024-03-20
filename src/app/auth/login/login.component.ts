@@ -40,11 +40,6 @@ export class LoginComponent {
           this.isLoading = false;
           this.isLogged = true;
           this.isFailed = false;
-          localStorage.setItem('currentUser', JSON.stringify(response.data));
-          localStorage.setItem(
-            'lastStoredTime',
-            new Date().getTime().toString()
-          );
           this.router
             .navigateByUrl('/', { skipLocationChange: true })
             .then(() => {

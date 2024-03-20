@@ -11,27 +11,15 @@ export class AdminBoardComponent {
   currentUserName: String;
   isAdmin: Boolean = false;
   ngOnInit() {
-    if (!JSON.parse(this.authService.getCurrentUser()).role) {
-      this.checkAdmin(JSON.parse(this.authService.getCurrentUser()).user.role);
-    }
-    if (JSON.parse(this.authService.getCurrentUser()).role) {
-      this.checkAdmin(JSON.parse(this.authService.getCurrentUser()).role);
-    }
-    if (JSON.parse(this.authService.getCurrentUser()).name) {
-      this.currentUserName = JSON.parse(this.authService.getCurrentUser()).name;
-    }
-    if (!JSON.parse(this.authService.getCurrentUser()).name) {
-      this.currentUserName = JSON.parse(
-        this.authService.getCurrentUser()
-      ).user.name;
-    }
-  }
-
-  checkAdmin(role) {
-    if (role === 'admin' || role === 'owner') {
-      this.isAdmin = true;
-    } else {
-      this.isAdmin = false;
-    }
+    this.authService.getUserProfile().subscribe(
+      (response) => {
+        if (response.data.role === 'admin' || response.data.role === 'owner') {
+          this.isAdmin = true;
+        }
+      },
+      (error) => {
+        console.error('Error:', error); // Handle error
+      }
+    );
   }
 }
