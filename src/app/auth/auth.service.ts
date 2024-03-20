@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/';
+  apiUrl: string = 'https://api.sportalmanager.com/api/v1/';
   constructor(private http: HttpClient) {}
   isLogged = new Subject<Boolean>();
   loginUser(email, password): Observable<any> {
