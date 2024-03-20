@@ -1,4 +1,4 @@
-<form [formGroup]="createEventFrom" (submit)="onSubmit()">
+<form [formGroup]="createEventFrom" (submit)="onSubmit()" novalidate>
   <div class="row">
     <div class="col-md-6">
       <div class="panel panel1">
@@ -137,7 +137,25 @@
       </div>
 
       <!-- Add more form fields for other event properties as needed -->
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button
+        *ngIf="!isLoading"
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!this.createEventFrom.valid"
+      >
+        Submit
+      </button>
+      <button *ngIf="isLoading" type="submit" class="btn btn-primary" disabled>
+        Loading...
+      </button>
     </div>
   </div>
 </form>
+<div class="row">
+  <div class="col-md-12">
+    <br *ngIf="isError" />
+    <div *ngIf="isError" class="alert alert-danger center" role="alert">
+      {{ this.error }}
+    </div>
+  </div>
+</div>

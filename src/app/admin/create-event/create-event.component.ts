@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import { log } from 'node:console';
 import { Router } from '@angular/router';
@@ -12,20 +12,23 @@ export class CreateEventComponent {
   constructor(private adminService: AdminService, private router: Router) {}
 
   allTeams: any = [''];
+  isLoading: boolean = false;
   allWorkers: Array<any> = [''];
+  error: String;
+  isError: Boolean = false;
 
   createEventFrom = new FormGroup({
-    name: new FormControl(''),
-    description: new FormControl(''),
-    homeTeam: new FormControl(''),
-    awayTeam: new FormControl(''),
-    sport: new FormControl(''),
-    link: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    homeTeam: new FormControl('', Validators.required),
+    awayTeam: new FormControl('', Validators.required),
+    sport: new FormControl('', Validators.required),
+    link: new FormControl('', Validators.required),
     workerEmails: new FormControl(''),
-    startTime: new FormControl(''),
-    startDate: new FormControl(''),
-    price: new FormControl(''),
-    ticketAmount: new FormControl(''),
+    startTime: new FormControl('', Validators.required),
+    startDate: new FormControl('', Validators.required),
+    price: new FormControl(null, Validators.required),
+    ticketAmount: new FormControl(null, Validators.required),
   });
 
   ngOnInit() {
@@ -49,7 +52,15 @@ export class CreateEventComponent {
   }
 
   onSubmit() {
-    const dateString = '2024-03-19';
+    this.isLoading = true;
+
+    if (this.createEventFrom.value.ticketAmount > 999) {
+      this.isError = true;
+      this.error = 'Ticket Amount must be less than 999';
+      return;
+    }
+
+    const dateString = this.createEventFrom.value.startDate;
 
     // Create a new Date object from the date string
     const dateObject = new Date(dateString);
@@ -75,6 +86,7 @@ export class CreateEventComponent {
       )
       .subscribe(
         (response) => {
+          this.isLoading = false;
           this.router
             .navigateByUrl('/', { skipLocationChange: true })
             .then(() => {
@@ -82,10 +94,11 @@ export class CreateEventComponent {
             });
         },
         (error) => {
+          this.isLoading = false;
           // TODO MAKE AN ERROR ALERT
-          console.log('try again');
-
-          console.error('Error:', error); // Handle error
+          this.isError = true;
+          this.error =
+            'Please try again, if having trouble contact us at sportalmanager@gmail.com';
         }
       );
   }
