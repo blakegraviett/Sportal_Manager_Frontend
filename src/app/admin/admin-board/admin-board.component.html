@@ -6,10 +6,8 @@
         *ngIf="currentUserRole !== 'admin' || 'owner'"
         class="alert alert-danger"
       >
-        You are do not have access to this page
-        <a style="cursor: pointer" routerLink="/auth/login" class="loginEr"
-          >here</a
-        >
+        You are do not have access to this page! <br />Please contact your
+        organization administrator if you belive this is a mistake.
       </div>
     </div>
   </div>
@@ -21,7 +19,11 @@
       <h2>Admin Panel</h2>
       <hr />
       <ul>
-        <li><a  style="cursor: pointer" routerLink="/admin-panel/create-events">Create Events</a></li>
+        <li>
+          <a style="cursor: pointer" routerLink="/admin-panel/create-events"
+            >Create Events</a
+          >
+        </li>
         <li><a routerLink="/admin-panel/manage-events">Manage Events</a></li>
         <li><a routerLink="#">Update Scores</a></li>
         <li><a routerLink="#">Manage Teams</a></li>
@@ -30,7 +32,7 @@
         <br />
         <hr />
         <li>
-          <h5>Welcome {{ this.currentUserName }}!</h5>
+          <h5 class="center">Welcome {{ this.currentUserName }}!</h5>
         </li>
       </ul>
     </div>

@@ -16,6 +16,7 @@ export class AdminBoardComponent {
         if (response.data.role === 'admin' || response.data.role === 'owner') {
           this.isAdmin = true;
         }
+        this.currentUserName = response.data.name;
       },
       (error) => {
         console.error('Error:', error); // Handle error
