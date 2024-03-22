@@ -15,7 +15,6 @@ export class ViewEventsComponent {
     this.eventsService.getAllEvents().subscribe(
       (response) => {
         // Handle successful login
-        console.log('response:', response);
         this.eventsArray = response.data;
       },
       (error) => {
