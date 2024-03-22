@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AdminService {
-  apiUrl: string = 'https://event-manager-03bk.onrender.com/api/v1/';
+  apiUrl: string = 'https://api.sportalmanager.com/api/v1/';
   constructor(private http: HttpClient) {}
 
   // create a new event
