@@ -8,6 +8,7 @@ import { ViewEventsComponent } from './events/view-events/view-events.component'
 import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
 import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
 import { CreateEventComponent } from './admin/create-event/create-event.component';
+import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'manage-events', pathMatch: 'full' },
       { path: 'create-events', component: CreateEventComponent },
       { path: 'manage-events', component: ManageEventsComponent },
-      // { path: 'update-scores', component: UpdateScoresComponent },
+      { path: 'update-scores', component: UpdateScoresComponent },
       // { path: 'manage-teams', component: ManageTeamsComponent },
       // { path: 'manage-admins', component: ManageAdminsComponent },
       // { path: 'manage-workers', component: ManageWorkersComponent }

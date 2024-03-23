@@ -192,7 +192,10 @@
       </div>
       <div class="game-info">
         <div class="score">
-          <span>Live Score</span>
+          <span *ngIf="this.selectedEvent.period.length == false"
+            >Live Score</span
+          >
+          <span>{{ this.getLivePeriodScore() }}</span>
         </div>
         <div class="purchase-tickets">
           <a target="_blank" href="{{ this.selectedEvent.ticketLink }}"

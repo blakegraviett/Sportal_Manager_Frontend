@@ -33,6 +33,7 @@ export class ManageEventsComponent {
     startTime: '',
     link: '',
     ticketLink: '',
+    period: '',
     teams: {
       homeTeam: '',
       awayTeam: '',
@@ -280,5 +281,11 @@ export class ManageEventsComponent {
       .padStart(2, '0')} ${period}`;
 
     return amPmTime;
+  }
+  getLivePeriodScore() {
+    const periodArr = this.selectedEvent.period;
+    const mostRecentString = periodArr[periodArr.length - 1];
+
+    return mostRecentString;
   }
 }

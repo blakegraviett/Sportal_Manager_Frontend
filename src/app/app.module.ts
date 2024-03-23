@@ -19,6 +19,7 @@ import { EventCardComponent } from './events/event-card/event-card.component';
 import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
 import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
 import { CreateEventComponent } from './admin/create-event/create-event.component';
+import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CreateEventComponent } from './admin/create-event/create-event.componen
     AdminBoardComponent,
     ManageEventsComponent,
     CreateEventComponent,
+    UpdateScoresComponent,
   ],
   imports: [
     BrowserModule,
