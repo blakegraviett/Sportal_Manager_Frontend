@@ -119,7 +119,7 @@ export class UpdateScoresComponent {
       )
       .subscribe(
         (response) => {
-          console.log(response);
+          location.reload();
         },
         (error) => {
           console.error('Error:', error); // Handle error
