@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -79,5 +80,15 @@ export class AdminService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers, withCredentials: true };
     return this.http.delete(`${this.apiUrl}events/${id}`, options);
+  }
+  updateScore(id, homeTeamScore, awayTeamScore): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { homeTeamScore, awayTeamScore };
+    const options = { headers, withCredentials: true };
+    return this.http.patch<any>(
+      `${this.apiUrl}events/score/${id}`,
+      credentials,
+      options
+    );
   }
 }
