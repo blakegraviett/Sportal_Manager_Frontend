@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <h2 class="center">Create Team</h2>
+  <hr />
+  <form [formGroup]="createTeamForm" (submit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="teamName">Team Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="teamName"
+            formControlName="teamName"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <br />
+        <div class="form-group">
+          <label for="logo">Team Logo (500x500) : </label>
+          <input
+            type="file"
+            formControlName="teamLogo"
+            class="form-control-file file"
+            id="logo"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 center">
+        <br />
+        <button type="submit" class="btn btn-primary" *ngIf="!isLoading">
+          Create Team
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          disabled
+          *ngIf="isLoading"
+        >
+          Loading...
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <hr />
+
+  <h2 class="center">Current Teams</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let team of this.allTeams">
+      <div class="card mb-3">
+        <div
+          class="card-body bg-custom text-dark d-flex flex-column align-items-center"
+        >
+          <h5 class="center card-title">{{ team.name }}</h5>
+          <img
+            alt="Team Logo"
+            src="{{ team.logo }}"
+            class="img-thumbnail"
+            style="max-width: 200px"
+          />
+          <br />
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

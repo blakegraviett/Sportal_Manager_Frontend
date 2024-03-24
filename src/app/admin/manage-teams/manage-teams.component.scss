@@ -1,0 +1,38 @@
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffa559;
+}
+button:disabled {
+  background-color: #ff6000;
+}
+.btn-danger {
+  background-color: #ff0f0f;
+  margin-top: 1%;
+}
+.btn-danger:hover {
+  background-color: #ff4545;
+  margin-top: 1%;
+}
+.file {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.card-body {
+  background-color: black; /* Change background color */
+  color: white; /* Change text color */
+  outline: 2px solid #ff6000;
+  border-radius: 5px;
+  box-shadow: 1 2 10px #ff6000;
+}
+.card-title {
+  color: white;
+}

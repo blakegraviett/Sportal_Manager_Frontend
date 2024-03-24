@@ -91,4 +91,24 @@ export class AdminService {
       options
     );
   }
+
+  uploadImage(img): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let formData = new FormData();
+    formData.append('img', img);
+    const options = { headers, withCredentials: true };
+    return this.http.post<any>(
+      `${this.apiUrl}teams/upload-image`,
+      formData,
+      options
+    );
+  }
+  createTeam(name, img): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { name, img };
+    const options = { headers, withCredentials: true };
+    return this.http.post<any>(`${this.apiUrl}teams`, credentials, options);
+  }
 }
