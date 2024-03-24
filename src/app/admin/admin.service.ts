@@ -48,8 +48,6 @@ export class AdminService {
   updateEventWorkers(id, workers) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const credentials = { workers };
-    console.log('workers:', workers);
-
     const options = { headers, withCredentials: true };
     return this.http.patch(`${this.apiUrl}events/${id}`, credentials, options);
   }
