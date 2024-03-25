@@ -110,4 +110,10 @@ export class AdminService {
     const options = { headers, withCredentials: true };
     return this.http.post<any>(`${this.apiUrl}teams`, credentials, options);
   }
+
+  deleteTeam(id) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.delete(`${this.apiUrl}teams/${id}`, options);
+  }
 }

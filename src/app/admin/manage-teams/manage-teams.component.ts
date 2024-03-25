@@ -41,4 +41,15 @@ export class ManageTeamsComponent {
       }
     );
   }
+
+  onDelete(id) {
+    this.adminService.deleteTeam(id).subscribe(
+      (response) => {
+        location.reload();
+      },
+      (error) => {
+        console.error('Error:', error); // Handle error
+      }
+    );
+  }
 }

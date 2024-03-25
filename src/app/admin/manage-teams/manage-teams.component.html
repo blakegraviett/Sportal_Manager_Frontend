@@ -48,6 +48,7 @@
   <hr />
 
   <h2 class="center">Current Teams</h2>
+  <br />
   <div class="row">
     <div class="col-md-4" *ngFor="let team of this.allTeams">
       <div class="card mb-3">
@@ -62,7 +63,9 @@
             style="max-width: 200px"
           />
           <br />
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" (click)="onDelete(team._id)">
+            Delete
+          </button>
         </div>
       </div>
     </div>
