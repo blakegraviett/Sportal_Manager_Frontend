@@ -1,0 +1,42 @@
+<h2 class="center">Contact Workers of an Event</h2>
+<hr />
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="mb-3">
+        <label for="event" class="form-label">Select Event:</label>
+        <select class="form-select" id="event" name="event">
+          <option value="Event 1">Event 1</option>
+          <option value="Event 2">Event 2</option>
+          <option value="Event 3">Event 3</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <input type="text" class="form-control" id="subject" name="subject" />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Email:</label>
+        <textarea
+          class="form-control"
+          id="message"
+          name="message"
+          rows="4"
+        ></textarea>
+      </div>
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="group-email"
+          name="group-email"
+        />
+        <label class="form-check-label" for="group-email"
+          >Please Check if you want to send each worker an individual
+          email</label
+        >
+      </div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+  </div>
+</div>
