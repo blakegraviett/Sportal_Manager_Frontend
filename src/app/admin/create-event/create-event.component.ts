@@ -95,7 +95,6 @@ export class CreateEventComponent {
         },
         (error) => {
           this.isLoading = false;
-          // TODO MAKE AN ERROR ALERT
           this.isError = true;
           this.error =
             'Please try again, if having trouble contact us at sportalmanager@gmail.com';
