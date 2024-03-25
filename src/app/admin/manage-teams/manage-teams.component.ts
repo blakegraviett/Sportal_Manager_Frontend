@@ -25,7 +25,7 @@ export class ManageTeamsComponent {
 
   createTeamForm = new FormGroup({
     teamName: new FormControl('', Validators.required),
-    teamLogo: new FormControl(null, Validators.required),
+    teamLogo: new FormControl(),
   });
   async onSubmit() {
     this.isLoading = true;
@@ -33,8 +33,20 @@ export class ManageTeamsComponent {
       (response) => {
         // TODO: Once the logo is uploaded, create the new team with the image being the cloudinary url
         const teamLogo = response.data.src;
-        console.log(response);
-        this.isLoading = false;
+        console.log(teamLogo);
+
+        this.adminService
+          .createTeam(this.createTeamForm.value.teamName, teamLogo)
+          .subscribe(
+            (response) => {
+              this.isLoading = false;
+              location.reload();
+            },
+            (error) => {
+              this.isLoading = false;
+              console.error('Error:', error); // Handle error
+            }
+          );
       },
       (error) => {
         console.error('Error:', error); // Handle error
@@ -52,5 +64,12 @@ export class ManageTeamsComponent {
         console.error('Error:', error); // Handle error
       }
     );
+  }
+  onFileChange(event: any) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      this.logo = file;
+    }
   }
 }
