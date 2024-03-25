@@ -31,6 +31,7 @@ export class ManageTeamsComponent {
     this.isLoading = true;
     this.adminService.uploadImage(this.logo).subscribe(
       (response) => {
+        // TODO: Once the logo is uploaded, create the new team with the image being the cloudinary url
         const teamLogo = response.data.src;
         console.log(response);
         this.isLoading = false;
