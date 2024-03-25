@@ -91,4 +91,15 @@ export class AdminService {
       options
     );
   }
+
+  sendEmail(id, subject, body, isIndividual): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { subject, body, isIndividual };
+    const options = { headers, withCredentials: true };
+    return this.http.post<any>(
+      `${this.apiUrl}events/email-workers/${id}`,
+      credentials,
+      options
+    );
+  }
 }

@@ -9,6 +9,7 @@ import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
 import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
 import { CreateEventComponent } from './admin/create-event/create-event.component';
 import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
+import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,7 @@ const routes: Routes = [
       { path: 'update-scores', component: UpdateScoresComponent },
       // { path: 'manage-teams', component: ManageTeamsComponent },
       // { path: 'manage-admins', component: ManageAdminsComponent },
-      // { path: 'manage-workers', component: ManageWorkersComponent }
+      { path: 'manage-workers', component: ManageWorkersComponent },
     ],
   },
 ];
