@@ -90,12 +90,13 @@ export class AdminService {
     );
   }
 
-  uploadImage(img): Observable<any> {
+  uploadImage(img: File): Observable<any> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     });
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('img', img);
+
     const options = { headers, withCredentials: true };
     return this.http.post<any>(
       `${this.apiUrl}teams/upload-image`,

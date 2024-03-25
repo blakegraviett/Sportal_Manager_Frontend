@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ManageTeamsComponent {
   allTeams: Array<any>;
   isLoading: Boolean = false;
+  logo;
   constructor(private adminService: AdminService) {}
   ngOnInit() {
     this.adminService.getAllTeams().subscribe(
@@ -24,17 +25,19 @@ export class ManageTeamsComponent {
 
   createTeamForm = new FormGroup({
     teamName: new FormControl('', Validators.required),
-    teamLogo: new FormControl('', Validators.required),
+    teamLogo: new FormControl(null, Validators.required),
   });
   async onSubmit() {
     this.isLoading = true;
-    this.adminService.uploadImage(this.createTeamForm.value.teamLogo).subscribe(
+    this.adminService.uploadImage(this.logo).subscribe(
       (response) => {
         const teamLogo = response.data.src;
         console.log(response);
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error:', error); // Handle error
+        this.isLoading = false;
       }
     );
   }
