@@ -48,8 +48,6 @@ export class AdminService {
   updateEventWorkers(id, workers) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const credentials = { workers };
-    console.log('workers:', workers);
-
     const options = { headers, withCredentials: true };
     return this.http.patch(`${this.apiUrl}events/${id}`, credentials, options);
   }
@@ -92,6 +90,28 @@ export class AdminService {
     );
   }
 
+  uploadImage(img: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('img', img);
+    const options = { withCredentials: true };
+    return this.http.post<any>(
+      `${this.apiUrl}teams/upload-image`,
+      formData,
+      options
+    );
+  }
+  createTeam(name, logo): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const credentials = { name, logo };
+    const options = { headers, withCredentials: true };
+    return this.http.post<any>(`${this.apiUrl}teams`, credentials, options);
+  }
+
+  deleteTeam(id) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.delete(`${this.apiUrl}teams/${id}`, options);
+  }
   sendEmail(id, subject, body, isIndividual): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const credentials = { subject, body, isIndividual };

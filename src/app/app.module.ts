@@ -20,6 +20,7 @@ import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
 import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
 import { CreateEventComponent } from './admin/create-event/create-event.component';
 import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
+import { ManageTeamsComponent } from './admin/manage-teams/manage-teams.component';
 import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.co
     ManageEventsComponent,
     CreateEventComponent,
     UpdateScoresComponent,
+    ManageTeamsComponent,
     ManageWorkersComponent,
   ],
   imports: [
