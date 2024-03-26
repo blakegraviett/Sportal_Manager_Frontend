@@ -50,3 +50,9 @@ input:focus {
 button:disabled {
   background-color: #ff6000;
 }
+.panel {
+  outline: 1px solid #ff6000;
+  border-radius: 5px;
+  padding: 50px;
+  box-shadow: 1 2 10px #ff6000;
+}
