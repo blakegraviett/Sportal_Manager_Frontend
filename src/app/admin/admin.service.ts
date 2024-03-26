@@ -122,4 +122,32 @@ export class AdminService {
       options
     );
   }
+
+  getAllUsers(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    return this.http.get<any>(`${this.apiUrl}users`, options);
+  }
+
+  demoteUser(id): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    const credentials = {};
+    return this.http.patch<any>(
+      `${this.apiUrl}users/demote-admin/${id}`,
+      credentials,
+      options
+    );
+  }
+
+  promoteUser(id): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers, withCredentials: true };
+    const credentials = {};
+    return this.http.patch<any>(
+      `${this.apiUrl}users/update-admin/${id}`,
+      credentials,
+      options
+    );
+  }
 }

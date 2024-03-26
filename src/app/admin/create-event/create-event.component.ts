@@ -67,7 +67,7 @@ export class CreateEventComponent {
 
     // Get the month and day from the date object
     const month = dateObject.toLocaleString('default', { month: 'long' });
-    const day = dateObject.getDate();
+    const day = dateObject.getDate() + 1;
 
     this.adminService
       .createEvent(

@@ -10,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ManageEventsComponent {
   // * DEFAULTS
-  selectedOption: string = 'Select an option';
+  selectedOption: string = 'Select an event';
   isDropdownOpen: boolean = false;
   allUsers: any = [''];
   allEventWorkers: any = [];
@@ -124,7 +124,7 @@ export class ManageEventsComponent {
 
     // Get the month and day from the date object
     const month = dateObject.toLocaleString('default', { month: 'long' });
-    const day = dateObject.getDate();
+    const day = dateObject.getDate() + 1;
 
     const updatedEvent = {
       id: this.selectedEvent._id,
