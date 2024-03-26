@@ -1,0 +1,83 @@
+<h2 class="center">Email Workers of an Event</h2>
+<br />
+<div class="panel">
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="this.emailForm" (submit)="onSubmit()">
+        <div class="mb-3">
+          <label for="event" class="form-label">Select Event:</label>
+          <select
+            class="form-select"
+            id="event"
+            name="event"
+            formControlName="event"
+          >
+            <option
+              *ngFor="let event of this.allEvents"
+              value="{{ event._id }}"
+            >
+              {{ event.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="subject" class="form-label">Subject:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="subject"
+            name="subject"
+            formControlName="subject"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Email:</label>
+          <textarea
+            class="form-control"
+            formControlName="body"
+            id="message"
+            name="message"
+            rows="8"
+          ></textarea>
+        </div>
+        <div class="mb-3 form-check">
+          <input
+            formControlName="isIndivual"
+            type="checkbox"
+            class="form-check-input"
+            id="group-email"
+            name="group-email"
+            (change)="onCheckboxChange($event)"
+          />
+          <label class="form-check-label" for="group-email"
+            >Please Check if you want to send each worker an individual
+            email</label
+          >
+        </div>
+        <button
+          *ngIf="!this.isLoading"
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!this.emailForm.valid"
+        >
+          Send
+        </button>
+        <button
+          *ngIf="this.isLoading"
+          type="submit"
+          class="btn btn-primary"
+          disabled
+        >
+          Loading...
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<br />
+<div *ngIf="isSuccess" class="alert alert-success center" role="alert">
+  Emails Successfully Sent
+</div>
+<div *ngIf="isFailed" class="alert alert-danger center" role="alert">
+  Uh-oh somthing went wrong
+</div>

@@ -15,7 +15,7 @@
     <p *ngIf="this.events.description" class="center">
       {{ this.events.description }}
     </p>
-    <p class="center">Start Time: test</p>
+    <p class="center">{{ events.date }}</p>
     <div class="view-game">
       <a href="{{ events.link }}">Watch Game</a>
     </div>
@@ -27,7 +27,9 @@
       <span>{{ this.getLivePeriodScore() }}</span>
     </div>
     <div class="purchase-tickets">
-      <a href="{{ this.events.ticketLink }}">Purchase Tickets</a>
+      <a target="_blank" href="{{ this.events.ticketLink }}"
+        >Purchase Tickets</a
+      >
     </div>
   </div>
 </div>

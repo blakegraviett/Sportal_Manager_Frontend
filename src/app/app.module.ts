@@ -16,6 +16,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { ViewEventsComponent } from './events/view-events/view-events.component';
 import { EventCardComponent } from './events/event-card/event-card.component';
+import { AdminBoardComponent } from './admin/admin-board/admin-board.component';
+import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
+import { CreateEventComponent } from './admin/create-event/create-event.component';
+import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
+import { ManageTeamsComponent } from './admin/manage-teams/manage-teams.component';
+import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
+import { ManageAdminsComponent } from './admin/manage-admins/manage-admins.component';
+import { CheckTicketsComponent } from './check-tickets/check-tickets.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +36,14 @@ import { EventCardComponent } from './events/event-card/event-card.component';
     VerifyEmailComponent,
     ViewEventsComponent,
     EventCardComponent,
+    AdminBoardComponent,
+    ManageEventsComponent,
+    CreateEventComponent,
+    UpdateScoresComponent,
+    ManageTeamsComponent,
+    ManageWorkersComponent,
+    ManageAdminsComponent,
+    CheckTicketsComponent,
   ],
   imports: [
     BrowserModule,

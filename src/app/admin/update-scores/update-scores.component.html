@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-12 center">
+    <div class="custom-dropdown" (click)="toggleDropdown()">
+      <div class="dropdown-header">{{ selectedOption }}</div>
+      <div class="dropdown-menu" [ngClass]="{ show: isDropdownOpen }">
+        <div
+          class="dropdown-item"
+          *ngFor="let event of this.allEvents"
+          (click)="selectOption(event)"
+        >
+          {{ event.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-container">
+      <h2 class="center">Update Next Period Score</h2>
+      <p class="center">
+        {{
+          this.selectedEvent.sport.charAt(0).toUpperCase() +
+            this.selectedEvent.sport.slice(1)
+        }}
+        game
+      </p>
+      <hr />
+      <form [formGroup]="this.updateScoreForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="team1">{{ this.homeTeam.name }}</label>
+          <input
+            type="number"
+            class="form-control"
+            id="team1"
+            formControlName="homeScore"
+            placeholder="Enter Team Score"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="team2">{{ this.awayTeam.name }}</label>
+          <input
+            type="number"
+            class="form-control"
+            id="team2"
+            formControlName="awayScore"
+            placeholder="Enter Team Score"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="game-card">
+      <div class="teams">
+        <div class="team">
+          <img src="{{ this.homeTeam.logo }}" />
+          <span>{{ this.homeTeam.name }}</span>
+        </div>
+        <div class="versus">VS</div>
+        <div class="team">
+          <img src="{{ this.awayTeam.logo }}" />
+          <span>{{ this.awayTeam.name }}</span>
+        </div>
+      </div>
+      <div class="game-description">
+        <h2 class="center">{{ this.selectedEvent.name }}</h2>
+        <p *ngIf="this.selectedEvent.description" class="center">
+          {{ this.selectedEvent.description }}
+        </p>
+        <p class="center">{{ this.selectedEvent.date }}</p>
+        <div class="view-game">
+          <a href="{{ selectedEvent.link }}">Watch Game</a>
+        </div>
+        <!-- Add start time -->
+      </div>
+      <div class="game-info">
+        <div class="score">
+          <span *ngIf="this.selectedEvent.period.length == false"
+            >Live Score</span
+          >
+          <span>{{ this.getLivePeriodScore() }}</span>
+        </div>
+        <div class="purchase-tickets">
+          <a target="_blank" href="{{ this.selectedEvent.ticketLink }}"
+            >Purchase Tickets</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

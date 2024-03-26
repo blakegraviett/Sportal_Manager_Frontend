@@ -15,25 +15,21 @@ export class NavbarComponent {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.authService.getCurrentUser();
-        if (!JSON.parse(this.authService.getCurrentUser()).role) {
-          this.checkAdmin(
-            JSON.parse(this.authService.getCurrentUser()).user.role
-          );
-        }
-        if (JSON.parse(this.authService.getCurrentUser()).role) {
-          this.checkAdmin(JSON.parse(this.authService.getCurrentUser()).role);
-        }
+        this.authService.getUserProfile().subscribe(
+          (response) => {
+            if (
+              response.data.role === 'admin' ||
+              response.data.role === 'owner'
+            ) {
+              this.isAdmin = true;
+            }
+          },
+          (error) => {
+            console.error('Error:', error); // Handle error
+          }
+        );
       }
     });
-  }
-  // helper function to check if the user is an admin
-  checkAdmin(role) {
-    if (role === 'admin') {
-      this.isAdmin = true;
-    } else {
-      this.isAdmin = false;
-    }
   }
   ngOnDestroy() {}
 
