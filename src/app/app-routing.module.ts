@@ -12,6 +12,7 @@ import { UpdateScoresComponent } from './admin/update-scores/update-scores.compo
 import { ManageTeamsComponent } from './admin/manage-teams/manage-teams.component';
 import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
 import { ManageAdminsComponent } from './admin/manage-admins/manage-admins.component';
+import { CheckTicketsComponent } from './check-tickets/check-tickets.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
       { path: 'manage-admins', component: ManageAdminsComponent },
       { path: 'manage-workers', component: ManageWorkersComponent },
     ],
+  },
+  {
+    path: 'tickets/:id',
+    component: CheckTicketsComponent,
   },
 ];
 

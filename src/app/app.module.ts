@@ -23,6 +23,7 @@ import { UpdateScoresComponent } from './admin/update-scores/update-scores.compo
 import { ManageTeamsComponent } from './admin/manage-teams/manage-teams.component';
 import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
 import { ManageAdminsComponent } from './admin/manage-admins/manage-admins.component';
+import { CheckTicketsComponent } from './check-tickets/check-tickets.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ManageAdminsComponent } from './admin/manage-admins/manage-admins.compo
     ManageTeamsComponent,
     ManageWorkersComponent,
     ManageAdminsComponent,
+    CheckTicketsComponent,
   ],
   imports: [
     BrowserModule,
