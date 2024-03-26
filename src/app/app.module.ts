@@ -22,6 +22,7 @@ import { CreateEventComponent } from './admin/create-event/create-event.componen
 import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
 import { ManageTeamsComponent } from './admin/manage-teams/manage-teams.component';
 import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
+import { ManageAdminsComponent } from './admin/manage-admins/manage-admins.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.co
     UpdateScoresComponent,
     ManageTeamsComponent,
     ManageWorkersComponent,
+    ManageAdminsComponent,
   ],
   imports: [
     BrowserModule,

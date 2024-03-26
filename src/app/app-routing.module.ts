@@ -11,6 +11,7 @@ import { CreateEventComponent } from './admin/create-event/create-event.componen
 import { UpdateScoresComponent } from './admin/update-scores/update-scores.component';
 import { ManageTeamsComponent } from './admin/manage-teams/manage-teams.component';
 import { ManageWorkersComponent } from './admin/manage-workers/manage-workers.component';
+import { ManageAdminsComponent } from './admin/manage-admins/manage-admins.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,7 @@ const routes: Routes = [
       { path: 'manage-events', component: ManageEventsComponent },
       { path: 'update-scores', component: UpdateScoresComponent },
       { path: 'manage-teams', component: ManageTeamsComponent },
-      // { path: 'manage-admins', component: ManageAdminsComponent },
+      { path: 'manage-admins', component: ManageAdminsComponent },
       { path: 'manage-workers', component: ManageWorkersComponent },
     ],
   },

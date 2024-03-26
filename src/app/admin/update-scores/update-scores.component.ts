@@ -14,7 +14,7 @@ export class UpdateScoresComponent {
     private eventsService: EventsService,
     private adminService: AdminService
   ) {}
-  selectedOption: string = 'Select an option';
+  selectedOption: string = 'Select an event';
   isDropdownOpen: boolean = false;
   allEvents = [];
   allTeams = [];
