@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center align-items-center">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div *ngIf="!isBad" class="alert alert-success center" role="alert">
+        {{ this.msg }}
+      </div>
+      <div *ngIf="isBad" class="alert alert-danger center" role="alert">
+        {{ this.msg }}
+      </div>
+    </div>
+  </div>
+</div>

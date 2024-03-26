@@ -8,6 +8,7 @@ export class EventsService {
   constructor(private http: HttpClient) {}
   eventApiUrl: string = 'https://api.sportalmanager.com/api/v1/events';
   teamApiUrl: string = 'https://api.sportalmanager.com/api/v1/teams';
+  ticketsApiUrl: string = 'https://api.sportalmanager.com/api/v1/tickets/';
   getAllEvents(): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<any>(`${this.eventApiUrl}`, {
@@ -19,6 +20,14 @@ export class EventsService {
   getSingleTeam(id: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get<any>(`${this.teamApiUrl}/${id}`, {
+      headers,
+      withCredentials: true,
+    });
+  }
+
+  checkTickets(id: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<any>(`${this.ticketsApiUrl}check/${id}`, {
       headers,
       withCredentials: true,
     });
